@@ -21,15 +21,20 @@ back a single clean JSON reply.
 
 ## 2. AI Pipe specifics
 - Sign in at https://aipipe.org with your institute email, copy the token.
-- AI Pipe exposes an OpenAI-compatible endpoint (`AIPIPE_BASE_URL`, default
-  `https://aipipe.org/openai/v1`) — the OpenAI SDK just needs its `base_url`
-  pointed there, which `bot.py` already does.
-- **Check the exact model name string AI Pipe expects** (often prefixed,
-  e.g. `openai/gpt-4o`) in their docs/dashboard before deploying — an
-  incorrect model name will fail every request.
-- AI Pipe tokens/credits can be limited or expire — confirm your token will
-  still be valid and funded at grading time (this killed bots in past runs
-  per the failure-mode table).
+- AI Pipe proxies OpenRouter. The chat completions endpoint (`AIPIPE_BASE_URL`,
+  default `https://aipipe.org/openrouter/v1`) is OpenAI-SDK-compatible —
+  `bot.py` already points there.
+- **Model string format:** `provider/model-name`, exactly as listed on
+  https://openrouter.ai/models — e.g. `openai/gpt-4o`, `openai/gpt-4o-mini`,
+  `anthropic/claude-3.5-sonnet`. Copy the ID straight from that page (or from
+  a working request in AI Pipe's Playground) rather than guessing — a wrong
+  string fails every request.
+- Note: `openai/gpt-4o-mini` and similar small models get real-world stats
+  questions wrong per the worked example in the task doc — use a
+  frontier-class model like `openai/gpt-4o`.
+- AI Pipe's free tier is $0.10/week (visible on your token page) — confirm
+  your budget will cover grading and won't reset/expire mid-run (this killed
+  bots in past runs per the failure-mode table).
 
 ## 3. Push to GitHub
 ```bash
