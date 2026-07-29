@@ -205,6 +205,7 @@ def run_agent(chat_id: int, user_text: str) -> str:
                 messages=messages,
                 tools=TOOLS if use_tools else None,
                 tool_choice="auto" if use_tools else None,
+                max_tokens=1000,
             )
         except Exception as e:
             log_event({"chat_id": chat_id, "type": "llm_error", "error": str(e)})
