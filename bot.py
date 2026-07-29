@@ -38,7 +38,7 @@ from openai import OpenAI
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 AIPIPE_TOKEN = os.environ["AIPIPE_TOKEN"]
 BASE_URL = os.environ.get("BASE_URL", "").rstrip("/")
-AIPIPE_BASE_URL = os.environ.get("AIPIPE_BASE_URL", "https://aipipe.org/openai/v1")
+AIPIPE_BASE_URL = os.environ.get("AIPIPE_BASE_URL", "https://aipipe.org/openrouter/v1")
 MODEL_NAME = os.environ.get("MODEL_NAME", "openai/gpt-4o")
 
 TELEGRAM_API = f"https://api.telegram.org/bot{BOT_TOKEN}"
